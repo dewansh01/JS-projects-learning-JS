@@ -1,0 +1,24 @@
+body{
+    background-color: green;
+    text-align: center;  
+    font-size: 50px;
+    font-weight: bold;
+}
+h1{
+    color: goldenrod;
+}
+
+#startgame{
+    padding: 10px;
+    background-color: black;
+    color: gold;
+    margin-bottom: 10px;
+}
+
+#newcard{
+    padding: 10px;
+    display: block;
+    margin: auto;
+    background-color: black;
+    color: gold;
+}
