@@ -11,26 +11,46 @@
 //KQJ-10
 //1-9-as usual
 
-let firstCard=4;
-let secondCard=16;
-let sum=firstCard+secondCard;
 let hasBlackJack=false;
-let isAlive=true;
+let isAlive=false;
 let message="";
 let sumel=document.getElementById("sum")
 let cardsel=document.getElementById("cards")
 let messageel=document.getElementById("message-el")
-let cards=firstCard+" "+secondCard;
+let cardsarr=[]
+let sum=0;
+
+
+function getRandomCard(){
+    let value=Math.floor(Math.random()*13)+1;
+    if(value>9){
+        return 10;
+    }
+    else if(value==1){
+        return 11;
+    }
+    else{
+        return value;
+}}
 
 
 function startGame(){
+    isAlive=true;
+    sum=0;
+    cardsarr=[];
+    cardsarr[0]=getRandomCard();
+    cardsarr[1]=getRandomCard();
+    sum=cardsarr[0]+cardsarr[1];
     renderGame();
 }
 
 
 function renderGame(){
     sumel.textContent="sum :"+sum;
-    cardsel.textContent="cards :"+cards;
+    cardsel.textContent="cards :";
+    for (let index = 0; index < cardsarr.length; index++) {
+        cardsel.textContent+=" "+cardsarr[index];   
+    }
 if (sum>21) {
     message="Game over";
     messageel.textContent=message;
@@ -49,11 +69,14 @@ else{
 
 
 function newCard(){
-    message="Drawing a new card from the deck!";
-    messageel.textContent=message;
-    let numberForDraw=1;
-    sum+=numberForDraw;
-    renderGame();
+    if(isAlive==true&&hasBlackJack==false)
+    {
+        message="Drawing a new card from the deck!";
+        messageel.textContent=message;
+        cardsarr.push(getRandomCard())
+        sum+=cardsarr[2];
+        renderGame();
+    }
 }
 
 console.log(message);
